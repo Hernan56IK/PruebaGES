@@ -12,17 +12,21 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use Laravel\Sanctum\HasApiTokens;
 use Filament\Panel;
+use Filament\Models\Contracts\FilamentUser;
+
 
 #[Fillable(['name', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
-class User extends Authenticatable
+class User extends Authenticatable inplements FilamentUser
 {
     /** @use HasFactory<UserFactory> */
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
     }
+    
     /**
      * Get the attributes that should be cast.
      *
