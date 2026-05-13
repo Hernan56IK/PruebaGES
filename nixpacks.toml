@@ -3,8 +3,11 @@ nixPkgs = ["php84", "php84Packages.composer"]
 
 [phases.install]
 cmds = [
+  "rm -rf bootstrap/cache/*.php",
   "composer install --no-dev --optimize-autoloader",
+  "composer dump-autoload",
   "php artisan optimize:clear",
+  "php artisan filament:clear-cached-components",
   "php artisan config:clear",
   "php artisan cache:clear",
   "php artisan route:clear",
