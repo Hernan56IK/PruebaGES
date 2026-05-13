@@ -1,12 +1,8 @@
 [phases.setup]
-nixPkgs = ["php84"]
+nixPkgs = ["php84", "php84Packages.composer"]
 
 [phases.install]
-cmds = [
-  "php -r \"copy('https://getcomposer.org/installer', 'composer-setup.php');\"",
-  "php composer-setup.php",
-  "php composer.phar install --no-dev --optimize-autoloader"
-]
+cmds = ["composer install --no-dev --optimize-autoloader"]
 
 [start]
 cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
