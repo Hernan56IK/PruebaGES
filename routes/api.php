@@ -5,4 +5,3 @@ use App\Http\Controllers\Api\CompanyController;
 
 
 
-Route::apiResource('companies', CompanyController::class);
