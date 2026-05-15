@@ -57,21 +57,4 @@ class CompanyResource extends Resource
         ];
     }
 
-    public static function canViewAny(): bool{
-        return auth()->user()->can('view companies');
-    }
-
-    public static function canCreate(): bool{
-        return auth()->user()->can('create companies');
-    }
-
-    public static function canEdit(Model $record): bool{
-        return auth()->user()->can('edit companies');
-    }
-
-    public static function canDelete(Model $record): bool{
-        return auth()->user()->can('delete companies');
-    }
-    
-    
 }
